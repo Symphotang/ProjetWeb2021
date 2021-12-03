@@ -1,0 +1,40 @@
+@startuml
+
+title UML
+
+
+class Utilisateur {
+  -login:string
+  -motDePasse:string
+  -nom:string
+  -prenom:string
+  -dateNaissance:date
+  +enregistrer(login,motDePasse,nom,prenom,dateNaissance)
+  +identifier(login,motDePasse)
+  +deconnecter()
+  +creerLieu(lieu)
+}
+
+class Administrateur extends Utilisateur{
+    +modification()
+    +suppression()
+}
+
+class Activités {
+    -date:date
+    -heureDebut:date
+    -heureFin:date
+}
+
+class Lieu {
+    -denomination:string
+    -adresse:string
+    -latitude:double
+    -longitude:double
+}
+
+Utilisateur "1" -> "*" Utilisateur : amis
+Utilisateur "*" - "*" Activités : declare
+Activités "*" - "1" Lieu : deroule
+
+@enduml
